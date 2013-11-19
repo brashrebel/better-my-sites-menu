@@ -36,4 +36,29 @@ function bmsm_load_scripts() {
 }
 add_action('admin_enqueue_scripts', 'bmsm_load_scripts');
 
+/*
+ *	Add some css
+ */
+function bmsm_css() { ?>
+<style type="text/css">
+#wp-admin-bar-new-my-sites > .ab-item, #wp-admin-bar-site-name > .ab-item {
+	z-index: 99;
+	position: relative;
+}
+#wp-admin-bar-new-my-sites .ab-sub-wrapper {
+	z-index: 10;
+}
+.ab-sub-wrapper #wp-admin-bar-new-my-sites-super-admin {
+	z-index: 99;
+	position: relative;
+	background-color: #252525;
+}
+.ab-sub-wrapper #wp-admin-bar-new-my-sites-list {
+	z-index: 10;
+}
+</style>
+<?php }
+add_action('admin_head', 'bmsm_css');
+add_action('wp_head', 'bmsm_css');
+
 ?>
