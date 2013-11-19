@@ -72,8 +72,8 @@ function new_admin_bar_my_sites_menu( $wp_admin_bar ) {
 		$blavatar = '<div class="blavatar"></div>';
 
 		$blogname = empty( $blog->blogname ) ? $blog->domain : $blog->blogname;
-		if (strlen($blogname) > 25) {
-		$newblogname = substr($blogname,0,25) . "...";
+		if (strlen($blogname) > 18) {
+		$newblogname = substr($blogname,0,18) . "...";
 		} else {
 		$newblogname = $blogname;
 		}

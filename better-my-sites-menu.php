@@ -35,15 +35,19 @@ function bmsm_load_scripts() {
 	wp_enqueue_script( 'bmsm-scripts', plugin_dir_url( __FILE__ ) . 'js/bmsm-scripts.js', array( 'jquery' ));
 }
 add_action('admin_enqueue_scripts', 'bmsm_load_scripts');
+add_action('wp_enqueue_scripts', 'bmsm_load_scripts');
 
 /*
  *	Add some css
  */
 function bmsm_css() { ?>
 <style type="text/css">
-#wp-admin-bar-new-my-sites > .ab-item, #wp-admin-bar-site-name > .ab-item {
+#wp-admin-bar-new-my-sites > .ab-item {
 	z-index: 99;
 	position: relative;
+}
+#wp-admin-bar-new-my-sites:hover {
+	width: 176px;
 }
 #wp-admin-bar-new-my-sites .ab-sub-wrapper {
 	z-index: 10;
