@@ -1,18 +1,18 @@
 /* 
 	LEVEL ONE
 */
-ul.ab-top-menu                         { position: relative; width: 100%; }
-ul.ab-top-menu li                      { font-weight: bold; float: left; position: relative; }
-ul.ab-top-menu a:hover		            { color: #000; }
-ul.ab-top-menu li a                    { display: block; padding: 20px 8px; color: #222; position: relative; z-index: 2000; }
+ul.ab-top-menu                         {  }
+ul.ab-top-menu li                      {  }
+ul.ab-top-menu a:hover		           {  }
+ul.ab-top-menu li a                    {  }
 ul.ab-top-menu li a:hover,
-ul.ab-top-menu li a.hover              { background: #F3D673; position: relative; }
+ul.ab-top-menu li a.hover              {  }
 
 
 /* 
 	LEVEL TWO
 */
-ul.ab-top-menu ul 						{ display: none; position: absolute; top: 0; left: 0; width: 180px; z-index: 1000; }
-ul.ab-top-menu ul li 					{ font-weight: normal; background: #f6f6f6; color: #000; border-bottom: 1px solid #ccc; }
-ul.ab-top-menu ul li a					{ display: block; background: #eee !important; } 
-ul.ab-top-menu ul li a:hover			{ display: block; background: #F3D673 !important; } 
+ul.ab-top-menu ul 						{  }
+ul.ab-top-menu ul li 					{  }
+ul.ab-top-menu ul li a					{  }
+ul.ab-top-menu ul li a:hover			{  }

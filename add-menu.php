@@ -1,8 +1,14 @@
 <?php
 
-/***Add new My Sites menu*****/
-function new_admin_bar_my_sites_menu( $wp_admin_bar ) {
-        global $wp_admin_bar;
+/**
+ * Add the "My Sites/[Site Name]" menu and all submenus.
+ *
+ * @since 1.0
+ *
+ */
+function better_my_sites_menu() {
+
+	global  $wp_admin_bar;
 
 	// Don't show for logged out users or single site mode.
 	if ( ! is_user_logged_in() || ! is_multisite() )
@@ -13,56 +19,62 @@ function new_admin_bar_my_sites_menu( $wp_admin_bar ) {
 		return;
 
 	$wp_admin_bar->add_menu( array(
-		'id'    => 'new-my-sites',
+		'id'    => 'better-my-sites',
 		'title' => __( 'My Sites' ),
 		'href'  => admin_url( 'my-sites.php' ),
 	) );
 
 	if ( is_super_admin() ) {
 		$wp_admin_bar->add_group( array(
-			'parent' => 'new-my-sites',
-			'id'     => 'new-my-sites-super-admin',
+			'parent' => 'better-my-sites',
+			'id'     => 'better-my-sites-super-admin',
 		) );
 
 		$wp_admin_bar->add_menu( array(
-			'parent' => 'new-my-sites-super-admin',
-			'id'     => 'new-network-admin',
+			'parent' => 'better-my-sites-super-admin',
+			'id'     => 'network-admin',
 			'title'  => __('Network Admin'),
 			'href'   => network_admin_url(),
 		) );
 
 		$wp_admin_bar->add_menu( array(
-			'parent' => 'new-network-admin',
-			'id'     => 'new-network-admin-d',
+			'parent' => 'network-admin',
+			'id'     => 'network-admin-d',
 			'title'  => __( 'Dashboard' ),
 			'href'   => network_admin_url(),
 		) );
 		$wp_admin_bar->add_menu( array(
-			'parent' => 'new-network-admin',
-			'id'     => 'new-network-admin-s',
+			'parent' => 'network-admin',
+			'id'     => 'network-admin-s',
 			'title'  => __( 'Sites' ),
 			'href'   => network_admin_url( 'sites.php' ),
 		) );
 		$wp_admin_bar->add_menu( array(
-			'parent' => 'new-network-admin',
-			'id'     => 'new-network-admin-u',
+			'parent' => 'network-admin',
+			'id'     => 'network-admin-u',
 			'title'  => __( 'Users' ),
 			'href'   => network_admin_url( 'users.php' ),
 		) );
 		$wp_admin_bar->add_menu( array(
-			'parent' => 'new-network-admin',
-			'id'     => 'new-network-admin-v',
-			'title'  => __( 'Visit Network' ),
-			'href'   => network_home_url(),
+			'parent' => 'network-admin',
+			'id'     => 'network-admin-t',
+			'title'  => __( 'Themes' ),
+			'href'   => network_admin_url( 'themes.php' ),
+		) );
+		$wp_admin_bar->add_menu( array(
+			'parent' => 'network-admin',
+			'id'     => 'network-admin-p',
+			'title'  => __( 'Plugins' ),
+			'href'   => network_admin_url( 'plugins.php' ),
 		) );
 	}
 
 	// Add site links
 	$wp_admin_bar->add_group( array(
-		'parent' => 'new-my-sites',
-		'id'     => 'new-my-sites-list',
+		'parent' => 'better-my-sites',
+		'id'     => 'better-my-sites-list',
 		'meta'   => array(
-			'class' => is_super_admin() ? 'ab-sub-secondary kdropdown' : '',
+			'class' => is_super_admin() ? 'ab-sub-secondary' : '',
 		),
 	) );
 
@@ -72,17 +84,12 @@ function new_admin_bar_my_sites_menu( $wp_admin_bar ) {
 		$blavatar = '<div class="blavatar"></div>';
 
 		$blogname = empty( $blog->blogname ) ? $blog->domain : $blog->blogname;
-		if (strlen($blogname) > 25) {
-		$newblogname = substr($blogname,0,25) . "...";
-		} else {
-		$newblogname = $blogname;
-		}
-		$menu_id  = 'new-blog-' . $blog->userblog_id;
+		$menu_id  = 'blog-' . $blog->userblog_id;
 
 		$wp_admin_bar->add_menu( array(
-			'parent'    => 'new-my-sites-list',
+			'parent'    => 'better-my-sites-list',
 			'id'        => $menu_id,
-			'title'     => $blavatar . $newblogname,
+			'title'     => $blavatar . $blogname,
 			'href'      => admin_url(),
 		) );
 
@@ -120,8 +127,6 @@ function new_admin_bar_my_sites_menu( $wp_admin_bar ) {
 
 		restore_current_blog();
 	}
-	
 }
 
-add_action('admin_bar_menu', 'new_admin_bar_my_sites_menu',15);
-?>
+add_action( 'admin_bar_menu', 'better_my_sites_menu', 15 );

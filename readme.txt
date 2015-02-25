@@ -1,24 +1,14 @@
 === Better My Sites Menu ===
 
 Contributors: BrashRebel
-
 Tags: multisite, admin bar, my sites, toolbar
-
 Requires at least: 3.0.0
-
 Tested up to: 3.5.2
-
 Stable tag: 1.0
-
 License: GPLv2 or later
-
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-
-
 == Description ==
-
-
 
 When using WordPress multisite, the "My Sites" menu item will be added to the admin bar. Out of the box, this menu has a few limitations:
 1. It is as wide as the longest title of one of your sites. Lame.
@@ -33,47 +23,33 @@ All in all, this is a very light plugin. How it works is it removes the existing
 
 == Installation ==
 
-
-
 Using this plugin is very simple. All you have to do is:
 
-
 1. Upload the `better-my-sites-menu` folder to the `/wp-content/plugins/` directory
+2. Network Activate the plugin through the 'Plugins' menu in WordPress
 
-1. Network Activate the plugin through the 'Plugins' menu in WordPress
 
-
-Thats it!
+That's it!
 
 == Frequently Asked Questions ==
 
-
-
 = Who is this plugin for? =
-
-
 
 This plugin is for Network Administrators who have users that are members of large numbers of sites on the network.
 
-
-
 = What can we expect in future releases? =
-
-
 
 * Better scrolling
 * More customization options
 
 
-
 == Changelog ==
+
+= 1.1 =
+
+* Complete code refactoring. Much cleaner, safer, more organized and easier to manipulate.
 
 = 1.0 =
 
-
 * Initial release.
-
-
-
-== Upgrade Notice ==
 

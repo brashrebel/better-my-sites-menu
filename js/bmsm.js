@@ -1,28 +1,34 @@
-var maxHeight = 600;
+/*
+ *
+ * Credits to http://css-tricks.com/long-dropdowns-solution/
+ *
+ */
+
+var maxHeight = 400;
 
 $(function(){
 
-    $(".ab-top-menu > li#wp-admin-bar-new-my-sites").hover(function() {
-    
-         var $container = $(this),
-             $list = $container.find("ul"),
-             $anchor = $container.find("a"),
-             height = $list.height() * 1.1,       // make sure there is enough room at the bottom
-             multiplier = height / maxHeight;     // needs to move faster if list is taller
-        
+    $(".dropdown > li").hover(function() {
+
+        var $container = $(this),
+            $list = $container.find("ul"),
+            $anchor = $container.find("a"),
+            height = $list.height() * 1.1,       // make sure there is enough room at the bottom
+            multiplier = height / maxHeight;     // needs to move faster if list is taller
+
         // need to save height here so it can revert on mouseout            
         $container.data("origHeight", $container.height());
-        
+
         // so it can retain it's rollover color all the while the dropdown is open
         $anchor.addClass("hover");
-        
+
         // make sure dropdown appears directly below parent list item    
         $list
             .show()
             .css({
                 paddingTop: $container.data("origHeight")
             });
-        
+
         // don't do any animation if list shorter than max
         if (multiplier > 1) {
             $container
@@ -38,11 +44,11 @@ $(function(){
                     };
                 });
         }
-        
+
     }, function() {
-    
+
         var $el = $(this);
-        
+
         // put things back to normal
         $el
             .height($(this).data("origHeight"))
@@ -52,13 +58,7 @@ $(function(){
             .end()
             .find("a")
             .removeClass("hover");
-    
+
     });
-    
 
-    
-    
 });
-
-
-
